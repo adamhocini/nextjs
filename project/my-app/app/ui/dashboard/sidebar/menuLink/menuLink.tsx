@@ -1,19 +1,24 @@
+'use client'
 import React, { ReactNode } from 'react';
 import Link from 'next/link'
 import styles from "./menuLink.module.css"
+import { usePathname } from 'next/navigation';
 
 
 interface MenuLinkProps {
     item: {
       path: string;
-      icon: React.ReactNode; // Remplacez par le type correct de votre icône
+      icon: React.ReactNode;
       title: string;
     };
   }
 
 const MenuLink: React.FC<MenuLinkProps> = ({item}) => {
+    const pathname = usePathname()
+
+    console.log(pathname)
     return (
-        <Link href={item.path} className={styles.container}>
+        <Link href={item.path} className={`${styles.container} ${pathname === item.path && styles.active}`}>
             {item.icon}
             {item.title}
         </Link>
