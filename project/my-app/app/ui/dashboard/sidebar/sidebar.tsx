@@ -1,4 +1,17 @@
-import styles from "./sidebar.module.css" 
+import MenuLink from "./menuLink/menuLink";
+import styles from "./sidebar.module.css"
+import {
+  MdDashboard,
+  MdSupervisedUserCircle,
+  MdShoppingBag,
+  MdAttachMoney,
+  MdWork,
+  MdAnalytics,
+  MdPeople,
+  MdOutlineSettings,
+  MdHelpCenter,
+  MdLogout,
+} from "react-icons/md";
 
 const menuItems = [
   {
@@ -64,9 +77,20 @@ const menuItems = [
 ];
 
 const Sidebar = () => {
-    return (
-      <div>Sidebar</div>
-    )
-  }
-  
-export default Sidebar
+  return (
+    <div className={styles.container}>
+      <ul>
+        {menuItems.map((cat) => (
+          <li key={cat.title}>
+            <span className={styles.cat}>{cat.title}</span>
+            {cat.list.map((item) => (
+              <MenuLink item={item} key={item.title} />
+            ))}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+export default Sidebar;
