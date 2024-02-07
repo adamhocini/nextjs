@@ -291,3 +291,63 @@ Next.js dispose d'une API de métadonnées qui peut être utilisée pour défini
 Vous avez la possibilité d'utiliser ces fichiers pour des métadonnées statiques ou de les générer par programme au sein de votre projet.
 
 Avec ces deux options, Next.js générera automatiquement les <head>éléments pertinents pour vos pages.
+
+Routing : Le système de routing de next.js est basé sur le système de fichier. Le répertoire app est le point d’entré de l’application. Les fichiers dans ce répertoire sont accessibles via l’url, racine de l’application.
+
+Rôle des dossiers : Définir les routes de l’application
+
+Une route est un enchainement de dossier imbriqué.
+
+Rôle des fichiers : Définir le contenu de la page.
+
+Image 1
+
+Next fournit toute une liste de dossier et de fichier pour définir les routes de l’application.
+
+Voici la liste des fichiers dont le nom est réservé pour définir les routes de l’application.
+
+Image 2
+
+Pour créer une route imbriquée, il suffit d’imbriquer des dossiers. Par exemple, pour créer une route /about dans le dossier app et de créer le composant ‘route.tsx’ dans ce dossier.
+
+Routing : Pages et layout :
+
+Dans nextJS, une page est l’UI associé à une route. Dans le code, on la représente par un composant React exporté par un fichier appelé ‘route.txt’
+
+Image 3
+
+Par défaut tous les pages sont des composants Server, il faut utiliser ‘use client’ pour les rendre composant client.
+
+Layout : Un layout est une partie d’UI partagé entre plusieurs pages. Par exemple, un header, un fooster, un sidebar etc... Son but est de préserver la cohérence de l’UI entre chaque page. On ne modifie pas le layout à chaque changement de pages.
+
+Image 4
+
+Pour créer un layout, il suffit de créer un composant React exporté par un fichier appelé ‘layout.tsx’
+
+Le root layout est obligatoire, il doit forcement contenir les tags ‘html’ et ‘body’. Il est possible de créer un layout pour chaque page, mais il est aussi possible de créer un layout pour un groupe de pages.
+
+Image 5
+
+Grouper des routes :
+
+A l’intérieur du répertoire, il est possible de directement mapper l’imbrication des dossiers sur les routes de l’application. Il est possible de créer des dossiers spéciaux appelé ‘route groupe’ qui seront ignorés par le routing Next.
+
+Routing : Navigation
+
+Il existe 4 méthodes pour naviguer entre les pages :
+
+· Link : composant
+
+· useRouter : hook
+
+· Redirect : fonction
+
+· L’API history
+
+Link :
+
+Link est un composant fournit par Next qui est en réalité un wrapper autour de la balise HTML <a>. Il permet de naviguer entre les pages sans recharger les pages.
+
+Hook usePathname :
+
+Le hook usePathname permet de récupérer le Pathname de la page courante. Il permet par exemple de mettre en surbrillance le lien de la page courante. Pour utiliser un hook au sein d’un composant Next, il faut utiliser la directive ‘use client’.
