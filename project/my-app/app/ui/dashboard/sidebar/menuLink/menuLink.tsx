@@ -16,7 +16,6 @@ interface MenuLinkProps {
 const MenuLink: React.FC<MenuLinkProps> = ({item}) => {
     const pathname = usePathname()
 
-    console.log(pathname)
     return (
         <Link href={item.path} className={`${styles.container} ${pathname === item.path && styles.active}`}>
             {item.icon}
